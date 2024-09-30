@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Tyler Huff's Cyber Blog</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      function Header() {
+        return (
+            <>
+            <header>  
+                <h1>
+                    <a href='/'>TYLER HUFF'S CYBER BLOG</a>
+                </h1>
+                <a href='mailto:tylerhuff@rohd.io' class='button'>Send Email</a>
+                <a href="https://www.linkedin.com/" target='_blank' class="linkedin"><img
+                    src="assets/images/LinkedIn-logo.png" alt="LinkedIn logo"
+                    height="45px" />
+                </a>
+            </header>
+            </>
+        )
+      }
+
+      function Intro() {
+        return (
+            <>
+            <section id='about' class='intro'>
+                <img src='assets/images/TylerHuff-profile.jpg' alt='Robert Smith Picture' height='375px'></img>
+            </section>
+            </>
+        )
+      }
+
+      function BlogPost({img, blog, title, keywords, paragraph}) {
+        return (
+            <>
+            <a href={blog} target='_blank'>
+                <article class="blog-post">
+                    <img src={img}></img>
+                    <div class="blog">
+                        <h3>{title}</h3>
+                        <h4>{keywords}</h4>
+                        <p>{paragraph}</p>
+                    </div>
+                </article>
+            </a>
+            </>
+        )
+      }
+    
+      function MyApp() {
+        return (
+        <>  
+            <Header />
+            <Intro  />
+            <section id="blog-post-collection" class="blog-posts">
+                <h2 class="section-title">Blog Posts</h2>
+                <BlogPost img='assets/images/defcon.jpeg' blog='blog2.html' title='Hacker Culture' keywords='clothing, music, conventions' paragraph='Click to read article' />
+                <BlogPost img='assets/images/USCF.jpg' blog='blog1.html' title='U.S. Cyber Force' keywords='topics: military cybersecurity' paragraph='Click to read article' />
+            </section>
+        </>
+        )
+      }
+
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<MyApp />);
+
+    </script>
+
+</body>
+
+</html>
